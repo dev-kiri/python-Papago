@@ -22,7 +22,7 @@ class Papago:
         url = 'https://papago.naver.com/apis/langs/dect'
         timestamp = str(int(time.time() * 1000))
         deviceId = uuid.uuid4()
-        hash = await self.__encrypt(f'{deviceId}\n{url}\n{timestamp}', 'v1.5.1_4dfe1d83c2')
+        hash = await self.__encrypt(f'{deviceId}\n{url}\n{timestamp}', 'v1.5.2_0d13cb6cf4')
         auth = f'PPG {deviceId}:{hash}'
         response = requests.post(
             url,
@@ -42,7 +42,7 @@ class Papago:
         url = 'https://papago.naver.com/apis/n2mt/translate'
         timestamp = str(int(time.time() * 1000))
         deviceId = uuid.uuid4()
-        hash = await self.__encrypt(f'{deviceId}\n{url}\n{timestamp}', 'v1.5.1_4dfe1d83c2')
+        hash = await self.__encrypt(f'{deviceId}\n{url}\n{timestamp}', 'v1.5.2_0d13cb6cf4')
         auth = f'PPG {deviceId}:{hash}'
         if self.source == 'detect':
             self.source = await self.__detect(self.text)
