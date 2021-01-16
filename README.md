@@ -9,7 +9,7 @@ import asyncio
 loop = asyncio.get_event_loop()
 
 async def main():
-    return await Papago('detect', 'ja', 'Hello').translate(honorific=True)
+    return await Papago('detect', 'ja', '안녕').translate(honorific=True)
 
 print(loop.run_until_complete(main()))
 ```
