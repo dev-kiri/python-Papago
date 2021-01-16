@@ -14,7 +14,7 @@ async def main():
 print(loop.run_until_complete(main()))
 ```
 prints:
-```json
+```py
 {
     'source': 'ko',
     'target': 'ja', 
