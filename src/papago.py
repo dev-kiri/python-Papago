@@ -14,7 +14,7 @@ class Papago:
         self.target = target
         self.text = text
 
-    async def __encrypt(self, text, passphrase):
+    def __encrypt(self, text, passphrase):
         hash = hmac.digest(passphrase.encode(), text.encode(), 'MD5')
         return base64.b64encode(hash).decode()
 
@@ -22,7 +22,7 @@ class Papago:
         url = 'https://papago.naver.com/apis/langs/dect'
         timestamp = str(int(time.time() * 1000))
         deviceId = uuid.uuid4()
-        hash = await self.__encrypt(f'{deviceId}\n{url}\n{timestamp}', 'v1.5.2_0d13cb6cf4')
+        hash = self.__encrypt(f'{deviceId}\n{url}\n{timestamp}', 'v1.5.2_0d13cb6cf4')
         auth = f'PPG {deviceId}:{hash}'
         response = requests.post(
             url,
@@ -42,7 +42,7 @@ class Papago:
         url = 'https://papago.naver.com/apis/n2mt/translate'
         timestamp = str(int(time.time() * 1000))
         deviceId = uuid.uuid4()
-        hash = await self.__encrypt(f'{deviceId}\n{url}\n{timestamp}', 'v1.5.2_0d13cb6cf4')
+        hash = self.__encrypt(f'{deviceId}\n{url}\n{timestamp}', 'v1.5.2_0d13cb6cf4')
         auth = f'PPG {deviceId}:{hash}'
         if self.source == 'detect':
             self.source = await self.__detect(self.text)
@@ -74,6 +74,7 @@ class Papago:
         if response.status_code == 403: raise ConnectionAbortedError('Connnection aborted')
         if response.status_code != 200: raise Exception('Unexpected Error')
         body = response.json()
+        if verbose: return body
         sound = None
         srcSound = None
         if 'tlit' in body:
