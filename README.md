@@ -8,7 +8,7 @@ import asyncio
 
 async def main():
     papago = Papago('detect', 'ja')
-    res = await papago.translate('안녕하세요.', honorific=True)
+    res = await papago.translate('안녕', honorific=True)
     print(res)
 
 if __name__ == '__main__': asyncio.run(main())
