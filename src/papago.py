@@ -3,8 +3,6 @@ import hmac
 import base64
 import time
 import uuid
-import asyncio
-
 from typing import Dict
 
 class Papago:
