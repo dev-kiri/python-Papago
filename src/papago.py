@@ -3,6 +3,9 @@ import hmac
 import base64
 import time
 import uuid
+import asyncio
+import json
+
 from typing import Dict
 
 class Papago:
@@ -81,15 +84,15 @@ class Papago:
             'dict': 'true',
             'dictDisplay': '30',
             'honorific': 'true' if honorific else 'false',
-            'instant': 'true',
-            'paging': 'false',
+            'instant': 'false',
+            'paging': 'true',
             'source': self.source,
             'target': self.target,
             'text': text
         })
         if self.__check_status(response):
             content = response.json()
-            if verbose: return content
+            if verbose: return json.dumps(content, indent=4)
             sound: str = None
             srcSound: str = None
             if 'tlit' in content:
