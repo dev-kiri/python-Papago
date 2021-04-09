@@ -6,12 +6,12 @@ python translator
 from papago import Papago
 import asyncio
 
-loop = asyncio.get_event_loop()
-
 async def main():
-    return await Papago('detect', 'ja', '안녕').translate(honorific=True)
+    papago = Papago('detect', 'ja')
+    res = await papago.translate('안녕하세요.', honorific=True)
+    print(res)
 
-print(loop.run_until_complete(main()))
+if __name__ == '__main__': asyncio.run(main())
 ```
 prints:
 ```py
