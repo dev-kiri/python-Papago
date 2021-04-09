@@ -61,6 +61,10 @@ class Papago:
 
     async def translate(self, text: str, honorific: bool = False, verbose: bool = False) -> Dict[str, str]:
         url = 'https://papago.naver.com/apis/n2mt/translate'
+        if self.source == 'detect':
+            self.source = await self.__detect(text)
+            if not self.source:
+                raise Exception('cannot detect text')
         headers = self.__generateHeaders(url, [
             'content-type',
             'authorization',
