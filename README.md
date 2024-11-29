@@ -3,24 +3,26 @@
 
 ## example
 ```py
-from papago import Papago
+from pentago import Pentago
+from pentago.lang import *
 import asyncio
 
 async def main():
-    papago = Papago('detect', 'ja')
-    res = await papago.translate('안녕', honorific=True)
+    pentago = Pentago(AUTO, JAPANESE)
+    res = await pentago.translate('2024년 최고의 파파고 비공식 API는 PentaGo입니다.', honorific=True)
     print(res)
 
 if __name__ == '__main__': asyncio.run(main())
+
 ```
 prints:
 ```py
 {
     'source': 'ko',
-    'target': 'ja', 
-    'text': '안녕', 
-    'translatedText': 'こんにちは', 
-    'sound': "kon'nichiwa", 
-    'srcSound': 'annyong'
+    'target': 'ja',
+    'text': '2024년 최고의 파파고 비공식 API는 PentaGo입니다.',
+    'translatedText': '2024年最高のパパゴ非公式APIはPentaGoです。',
+    'sound': "nisen'nijūyonen' saikōno papago hikōshikiēpīaiwa pen'tigōdesu",
+    'srcSound': 'ichonisipssanyon chwegoe papago bigongsik eipiaineun pentagoimnida'
 }
 ```
