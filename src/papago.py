@@ -18,7 +18,7 @@ class Papago:
         return base64.b64encode(md5).decode()
 
     def __generateHeaders(self, url: str, filter: list) -> Dict[str, str]:
-        auth_key = b'v1.5.6_97f6918302'
+        auth_key = b'v1.8.6_c2bffea538'
         timestamp = str(int(time.time() * 1000))
         deviceId = str(uuid.uuid4())
         hashstr = self.__getHash(f'{deviceId}\n{url}\n{timestamp}'.encode(), auth_key)
