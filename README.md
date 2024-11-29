@@ -1,4 +1,4 @@
-# python-Papago
+# PentaGo
 곧 업데이트 예정입니다. 조금만 기다려주세요!
 
 ## example
